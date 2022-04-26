@@ -24,6 +24,8 @@ export class MainPageComponent {
   };
 
   agregarNuevoPersonaje( arg_personaje: Personaje) {
+    console.log('test');
+
     this.personajes.push(arg_personaje);
   }
 
