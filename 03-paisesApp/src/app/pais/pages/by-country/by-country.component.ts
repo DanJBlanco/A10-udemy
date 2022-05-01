@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PaisService } from '../../services/pais.service';
+import { SearchContryNameResponse } from '../../interfaces/search.interfaces';
 
 @Component({
   selector: 'app-by-country',
@@ -8,17 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ByCountryComponent implements OnInit {
 
-  termino: string = ''
-  constructor() { }
+  termino: string = '';
+  isError: boolean = false;
+  constructor( private _paisService: PaisService) { }
 
   ngOnInit(): void {
   }
 
   buscar(): void{
+    this.isError= false;
     if(this.termino.trim().length === 0){
       return;
     }
-    console.log(this.termino);
+
+    this._paisService.findByCountry(this.termino)
+    .subscribe(
+      (resp: SearchContryNameResponse[]) => {
+        console.log(resp[0].name);
+      },
+      (err) => {
+        this.isError = true;
+      }
+    );
+
 
   }
 

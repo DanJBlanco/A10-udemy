@@ -19,11 +19,11 @@
 
 <hr>
 
-<div class="alert alert-danger">
-  Country not found
+<div *ngIf="isError" class="alert alert-danger">
+  <b>{{termino }}</b> not found
 </div>
 
-<div class="row">
+<div *ngIf="!isError" class="row">
   <div class="col">
     <table class="table table-hover">
       <thead>
