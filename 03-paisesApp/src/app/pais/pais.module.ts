@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { ByCapitalComponent } from './pages/by-capital/by-capital.component';
 import { ByCountryComponent } from './pages/by-country/by-country.component';
 import { ByRegionComponent } from './pages/by-region/by-region.component';
 import { CountryComponent } from './pages/country/country.component';
+import { CountryTableComponent } from './components/country-table/country-table.component';
+import { CountryInputComponent } from './components/country-input/country-input.component';
 
 
 
@@ -14,7 +17,9 @@ import { CountryComponent } from './pages/country/country.component';
     ByCapitalComponent,
     ByCountryComponent,
     ByRegionComponent,
-    CountryComponent
+    CountryComponent,
+    CountryTableComponent,
+    CountryInputComponent
   ],
   exports: [
     ByCapitalComponent,
@@ -24,7 +29,8 @@ import { CountryComponent } from './pages/country/country.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class PaisModule { }
