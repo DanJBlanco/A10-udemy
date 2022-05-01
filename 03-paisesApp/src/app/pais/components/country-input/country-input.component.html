@@ -6,7 +6,8 @@ autocomplete="off"
   <input
   type="text"
   name= "termino"
-  placeholder="Country..."
+  [placeholder]="strPlaceHolder"
   class="form-control"
-  [(ngModel)]="termino">
+  [(ngModel)]="termino"
+  (input)="keyPress()">
 </form>

@@ -43,4 +43,9 @@ export class ByCountryComponent implements OnInit {
 
   }
 
+  suggest(termino: string): void {
+    this.isError = false;
+    // TODO: crear sugerencias
+
+  }
 }
