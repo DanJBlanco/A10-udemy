@@ -11,6 +11,20 @@
   </div>
 </div>
 
+ <ul class="list-group">
+   <li class="list-group-item list-group-item-action"
+   *ngFor="let country of countriesRecomend"
+   >
+   <a [routerLink]="['/pais', country.cca2]" class="nav-link">{{country.name.common}}</a>
+
+   </li>
+
+   <li *ngIf="countriesRecomend.length > 0" class="list-group-item list-group-item-action">
+   <a class="nav-link" (click)="buscar(termino)">Buscar: {{termino}}</a>
+
+   </li>
+ </ul>
+
 <hr>
 
 <div *ngIf="isError" class="alert alert-danger">
