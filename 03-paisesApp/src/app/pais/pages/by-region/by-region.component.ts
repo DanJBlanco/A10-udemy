@@ -6,11 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class ByRegionComponent implements OnInit {
+export class ByRegionComponent {
 
+  regions: string[] = ['africa', 'americas', 'asia', 'europe', 'oceania']
+  activeRegion: string = '';
   constructor() { }
 
-  ngOnInit(): void {
+
+  activateRegion(region: string){
+    this.activeRegion = region;
+    console.log(this.activeRegion);
+
   }
 
 }

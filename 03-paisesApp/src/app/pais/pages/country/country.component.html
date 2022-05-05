@@ -1,1 +1,50 @@
-<p>country works!</p>
+<div *ngIf="!country; else divCountry"
+class="alert alert-info">
+  loading...
+</div>
+
+<ng-template #divCountry>
+  <div class="row">
+    <div class="col-12">
+      <h1>Pais: <small>{{ country[0].name.common }}</small></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <h3>Flag:</h3>
+      <img [src]="country[0].flags.png" alt="" class="img-thumbnail">
+    </div>
+
+    <div class="col">
+      <h3>Info:</h3>
+      <ul>
+        <li class="list-group-item">
+          <strong>Capital:</strong> {{country[0].capital}}
+        </li>
+        <li class="list-group-item">
+          <strong>Population:</strong> {{country[0].population | number}}
+        </li>
+        <li class="list-group-item">
+          <strong>Timezone:</strong> {{country[0].timezones[0] }}
+        </li>
+      </ul>
+    </div>
+
+    <h3>Translations</h3>
+
+    <div class="row">
+      <div class="col">
+        <span *ngFor="let item of country[0].translations| keyvalue"
+        class="badge bg-primary mx-1" >
+          {{item.key}}: {{item.value.official}}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <pre class="mt-3">
+    <code>
+      {{country[0] | json}}
+    </code>
+</pre>
+</ng-template>
