@@ -1,1 +1,35 @@
-<p>numbers works!</p>
+<div class="text-layout">
+  <h1>Decimal Pipes and Average</h1>
+  <p>Pipes includes in Angular - Usually in commons module.</p>
+</div>
+
+
+<div class="grid">
+  <div class="col-4">
+    <p-card header="Total Sells"
+    subheader="current year">
+    <i class="pi pi-dollar"></i>
+
+    {{(totalSells + 1000000 ) | number:'.2-2'}}
+
+    </p-card>
+  </div>
+
+
+  <div class="col-4">
+    <p-card header="Gross Sells"
+    subheader="current year">
+    {{(totalSells + 2000000 ) | currency:'SOL':'S/':'.0-4'}}
+
+    </p-card>
+  </div>
+
+
+  <div class="col-4">
+    <p-card header="Percetage Profit"
+    subheader="current year">
+    {{(percentage ) | percent:'2.2-2'}}
+
+    </p-card>
+  </div>
+</div>
