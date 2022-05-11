@@ -2,8 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
+
+// Router
 import { AppRouterModule } from './app-router.module';
+
+// Custom Moduls
+import { SharedModule } from './shared/shared.module';
+import { SellsModule } from './sells/sells.module';
 
 @NgModule({
   declarations: [
@@ -11,8 +16,9 @@ import { AppRouterModule } from './app-router.module';
   ],
   imports: [
     BrowserModule,
+    AppRouterModule,
     SharedModule,
-    AppRouterModule
+    SellsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
