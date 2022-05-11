@@ -6,10 +6,57 @@
 
 <div class="grid">
   <div class="col-4">
-    <p-card header="Uppercase">
+    <p-card header="Uppercase '| uppercase' "
+    [subheader]="'in: ' + nameLower">
+    out: {{nameLower | uppercase}}
 
     </p-card>
   </div>
-  <div class="col-4">2</div>
-  <div class="col-4">3</div>
+  <div class="col-4">
+    <p-card header="Lowercase '| lowecase'"
+    [subheader]="'in: ' + nameUpper">
+    out: {{nameLower | lowercase}}
+
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card header="Titlecase '| titlecase'"
+    [subheader]="'in: ' + fullName">
+    out: {{fullName | titlecase}}
+
+    </p-card>
+  </div>
+</div>
+
+
+
+
+<div class="text-layout">
+  <h1>Date Pipe</h1>
+  <p>Pipe to print Date.</p>
+</div>
+
+<div class="grid">
+  <div class="col-6">
+    <p-card>
+      <ul>
+        <li>Date</li>
+        <li>Date | date</li>
+        <li>Date | date:'short'</li>
+        <li>Date | date:'long'</li>
+        <li>Date | date:'dd-MMM-YY in hh'</li>
+      </ul>
+    </p-card>
+  </div>
+  <div class="col-6">
+    <p-card>
+      <ul>
+        <li>{{date}}</li>
+        <li>{{date | date}}</li>
+        <li>{{date | date:'short'}}</li>
+        <li>{{date | date:'long'}}</li>
+        <li>{{date | date:'dd-MMM-YY in hh'}}</li>
+      </ul>
+    </p-card>
+  </div>
 </div>
