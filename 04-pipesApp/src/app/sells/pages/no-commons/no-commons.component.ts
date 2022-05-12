@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-no-commons',
@@ -45,4 +46,17 @@ export class NoCommonsComponent {
     this.clients.pop();
   }
 
+  // AsyncPipe
+  myObservable = interval(1000); // 0,1,2,3,4,.....,100
+
+
+  valuePromise = new Promise(
+    (resolve, reject) =>{
+
+      setTimeout( () => {
+        resolve('Got promises data')
+      }, 3500)
+
+    }
+  );
 }
