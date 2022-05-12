@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { PrimeNgModule } from '../prime-ng/prime-ng.module';
+
+
 import { NumbersComponent } from './pages/numbers/numbers.component';
 import { NoCommonsComponent } from './pages/no-commons/no-commons.component';
 import { BasicsComponent } from './pages/basics/basics.component';
 import { SortComponent } from './pages/sort/sort.component';
-import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 
+import { Upperstring } from './pipes/upperstring.pipe';
 
 
 @NgModule({
@@ -13,7 +17,8 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
     NumbersComponent,
     NoCommonsComponent,
     BasicsComponent,
-    SortComponent
+    SortComponent,
+    Upperstring
   ],
   exports: [
     NumbersComponent,
