@@ -11,6 +11,7 @@ import { Color, Hero } from '../../interfaces/sells.interfaces';
 export class SortComponent {
 
   isUpper: boolean = false;
+  orderBy: string = '';
 
   heros: Hero[] = [
     {
@@ -43,4 +44,9 @@ export class SortComponent {
   toggleUpper(){
     this.isUpper = !this.isUpper;
   }
+
+  changeSort(value: string): string{
+    return this.orderBy = value;
+  }
+
 }

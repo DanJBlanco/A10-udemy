@@ -15,22 +15,25 @@
       <button pButton
       label="By name"
       icon="pi pi-sort"
-      class="mr-1"></button>
+      class="mr-1"
+      (click)="changeSort('name')"></button>
 
       <button pButton
-      label="By Values"
+      label="Fly"
       icon="pi pi-sort"
-      class="mr-1 p-button-success"></button>
+      class="mr-1 p-button-success"
+      (click)="changeSort('fly')"></button>
       <button pButton
       label="By Color"
       icon="pi pi-sort"
-      class="mr-1 p-button-help"></button>
+      class="mr-1 p-button-help"
+      (click)="changeSort('color')"></button>
   </div>
 </p-toolbar>
 
 <div class="grid">
   <div class="col mt-2">
-    <p-table [value]="heros">
+    <p-table [value]="heros | sort:orderBy">
       <ng-template pTemplate="header">
           <tr>
               <th>Name</th>

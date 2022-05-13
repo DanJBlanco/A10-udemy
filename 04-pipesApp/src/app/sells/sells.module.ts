@@ -11,6 +11,7 @@ import { SortComponent } from './pages/sort/sort.component';
 
 import { Upperstring } from './pipes/upperstring.pipe';
 import { FlypipePipe } from './pipes/flypipe.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { FlypipePipe } from './pipes/flypipe.pipe';
     BasicsComponent,
     SortComponent,
     Upperstring,
-    FlypipePipe
+    FlypipePipe,
+    SortPipe
   ],
   exports: [
     NumbersComponent,
