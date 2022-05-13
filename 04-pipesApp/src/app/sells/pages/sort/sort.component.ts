@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { Color, Hero } from '../../interfaces/sells.interfaces';
 
 @Component({
   selector: 'app-sort',
@@ -7,36 +8,37 @@ import { MenuItem } from 'primeng/api';
   styles: [
   ]
 })
-export class SortComponent implements OnInit {
+export class SortComponent {
 
   isUpper: boolean = false;
 
-  items: MenuItem[] = [];
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.items = [
-      {
-          label: 'Update',
-          icon: 'pi pi-refresh'
-      },
-      {
-          label: 'Delete',
-          icon: 'pi pi-times'
-      },
-      {
-          label: 'Angular',
-          icon: 'pi pi-external-link',
-          url: 'http://angular.io'
-      },
-      {
-          label: 'Router',
-          icon: 'pi pi-upload',
-          routerLink: '/fileupload'
-      }
+  heros: Hero[] = [
+    {
+      name: 'Superman',
+      fly: true,
+      color: Color.blue
+    },
+    {
+      name: 'Batman',
+      fly: false,
+      color: Color.black
+    },
+    {
+      name: 'Robin',
+      fly: false,
+      color: Color.green
+    },
+    {
+      name: 'Daredevil',
+      fly: false,
+      color: Color.red
+    },
+    {
+      name: 'Greenlantern',
+      fly: true,
+      color: Color.green
+    }
   ];
-  }
 
   toggleUpper(){
     this.isUpper = !this.isUpper;

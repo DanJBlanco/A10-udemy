@@ -10,6 +10,7 @@ import { BasicsComponent } from './pages/basics/basics.component';
 import { SortComponent } from './pages/sort/sort.component';
 
 import { Upperstring } from './pipes/upperstring.pipe';
+import { FlypipePipe } from './pipes/flypipe.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { Upperstring } from './pipes/upperstring.pipe';
     NoCommonsComponent,
     BasicsComponent,
     SortComponent,
-    Upperstring
+    Upperstring,
+    FlypipePipe
   ],
   exports: [
     NumbersComponent,
