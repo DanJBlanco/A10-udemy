@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MaterialModule } from '../material/material.module';
+
 import { AddComponent } from './pages/add/add.component';
 import { FindComponent } from './pages/find/find.component';
 import { HeroComponent } from './pages/hero/hero.component';
@@ -19,7 +24,9 @@ import { HerosRoutingModule } from './heros-routing.module';
   ],
   imports: [
     CommonModule,
-    HerosRoutingModule
+    FlexLayoutModule,
+    HerosRoutingModule,
+    MaterialModule
   ]
 })
 export class HerosModule { }
