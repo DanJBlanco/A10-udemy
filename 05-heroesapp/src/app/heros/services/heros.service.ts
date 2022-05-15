@@ -13,4 +13,12 @@ export class HerosService {
   getHeros(): Observable<Hero[]>{
     return this.http.get<Hero[]>("http://localhost:3000/heroes")
   }
+
+
+  getHero( id: any): Observable<Hero>{
+    console.log(id);
+
+    return this.http.get<Hero>(`http://localhost:3000/heroes/${id}`);
+  }
+
 }
