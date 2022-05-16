@@ -7,7 +7,38 @@
 </mat-grid-list>
 
 <ng-template #divHero>
-  <mat-card >
+
+  <div fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap = "30px"
+        >
+
+        <div class="" fxFlex="50">
+          <h1>{{hero.superhero}} <small>- {{ hero.alter_ego}}</small></h1>
+          <mat-divider></mat-divider>
+          <br>
+          <img [src]="hero | imagenUrl" alt="">
+        </div>
+
+        <div class="" fxFlex ="50">
+          <h1>{{hero.publisher}}</h1>
+          <mat-divider></mat-divider>
+
+          <mat-list>
+            <mat-list-item>{{ hero.first_appearance}}</mat-list-item>
+            <mat-list-item>{{ hero.characters}}</mat-list-item>
+            <mat-list-item>{{ hero.publisher}}</mat-list-item>
+          </mat-list>
+
+          <br>
+          <button mat-stroked-button color="warn" (click)="back()">
+            Regresar
+          </button>
+        </div>
+  </div>
+
+
+  <!-- <mat-card >
 
     <mat-card-header>
       <mat-card-title>{{ hero.superhero }}</mat-card-title>
@@ -24,5 +55,5 @@
         <strong>Characters:</strong> {{hero.characters}}
       </p>
     </mat-card-content>
-  </mat-card>
+  </mat-card> -->
 </ng-template>

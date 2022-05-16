@@ -1,1 +1,46 @@
-<p>find works!</p>
+<div fxLayout="column">
+
+  <div>
+    <h1>Heros Finder</h1>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div fxLayout="column">
+    <h3>Serch</h3>
+
+    <mat-form-field >
+      <mat-label>Hero</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Hero"
+             matInput
+             [(ngModel)]="input"
+             [matAutocomplete]="auto"
+             (input)="searching()">
+      <mat-autocomplete
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+      (optionSelected)="optionSelected( $event )"
+      >
+        <mat-option *ngFor="let hero of heros" [value]="hero">
+          {{ hero.superhero }}
+        </mat-option>
+
+        <mat-option *ngIf="heros.length === 0 && errorMsj.trim().length > 0" [value]="">
+            {{ errorMsj }} <i>{{input}}</i>
+        </mat-option>
+
+
+      </mat-autocomplete>
+    </mat-form-field>
+
+
+  </div>
+
+  <div>
+    <pre>
+      {{ heroSelected | json}}
+    </pre>
+  </div>
+</div>
+
