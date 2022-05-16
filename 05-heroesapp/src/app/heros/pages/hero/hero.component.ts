@@ -22,17 +22,13 @@ export class HeroComponent implements OnInit {
   ngOnInit(): void {
     this.activateRouted.params
     .pipe(
-      switchMap( (param: any) =>
-        this._herosService.getHero(param.id) ),
+      switchMap( ({ id }) =>
+        this._herosService.getHeroById(id) ),
       tap( console.log)
     )
     .subscribe({
       next: (heroResponse: Hero) => {
         this.hero = heroResponse
-       },
-       error: () => {
-         console.log('ERror en peticion');
-
        }
     })
   }
