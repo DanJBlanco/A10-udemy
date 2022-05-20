@@ -35,4 +35,9 @@ export class HerosService {
   }
 
 
+  addHero(newHero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${this.baseUrl}/heroes`, newHero);
+  }
+
+
 }
