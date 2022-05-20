@@ -82,6 +82,15 @@ export class AddComponent implements OnInit {
 
   }
 
+  delete(){
+    if(confirm('Are you sure to delete this record ?')){
+      this._herosService.deleteHero(this.hero.id!)
+      .subscribe( resp => {
+        this.router.navigate(['/heros']);
+      })
+    }
+  }
+
   validateHero(): boolean {
     if (this.hero.superhero.trim().length <= 0) {
       return false;
