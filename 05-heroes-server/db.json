@@ -168,16 +168,13 @@
       "characters": "Norrin Radd"
     },
     {
-      "superhero": "Hero",
-      "alter_ego": "Aleter",
-      "characters": "thomas",
-      "first_appearance": "|11",
+      "superhero": "Hero2a",
+      "alter_ego": "Aletera",
+      "characters": "thomasa",
+      "first_appearance": "|11a",
       "publisher": "Marvel Comics",
-      "alt_img": "",
+      "alt_img": "https://previews.123rf.com/images/benchart/benchart1111/benchart111100300/11248867-ilustraci%C3%B3n-de-un-c%C3%B3mic-de-superh%C3%A9roes-de-pie-con-orgullo.jpg",
       "id": "JneAuyz"
-    },
-    {
-      "id": "7j7_-wE"
     }
   ]
 }

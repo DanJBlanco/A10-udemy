@@ -1,80 +1,101 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero, Publisher } from '../../interfaces/heros.interface';
 import { HerosService } from '../../services/heros.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styles: [
-  ]
+    `
+      img{
+        width: 100%;
+        border-radius: 5px;
+      }
+    `
+  ],
 })
 export class AddComponent implements OnInit {
-
-  publishers= [
+  publishers = [
     {
       id: 'DC Comics',
-      descrip: 'DC-Comics'
+      descrip: 'DC-Comics',
     },
     {
       id: 'Marvel Comics',
-      descrip: 'Marvel'
-    }
-
+      descrip: 'Marvel',
+    },
   ];
 
   hero: Hero = {
-     superhero: '',
-     alter_ego: '',
-     characters: '',
-     first_appearance: '',
-     publisher: Publisher.MarvelComics,
-     alt_img: '',
-  }
+    superhero: '',
+    alter_ego: '',
+    characters: '',
+    first_appearance: '',
+    publisher: Publisher.MarvelComics,
+    alt_img: '',
+  };
 
 
   constructor(
     private _herosService: HerosService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
 
-    console.log(this.activatedRoute.params
-      .pipe(
-        switchMap(  => this._herosService.getHeroById() )
-      )
-      .subscribe( resp =>
-        this.hero = resp
-        ));
-
-  }
-
-  save(){
-
-    if( !this.validateHero()){
+    if(!this.router.url.includes('edit')){
       return;
     }
-    this._herosService.addHero(this.hero)
-    .subscribe( resp =>
-      console.log('Save: ', resp)
-      );
+    this.activatedRoute.params
+      .pipe(
+        switchMap(({ id }) => this._herosService.getHeroById(id))
+      )
+      .subscribe((resp) => {
+        this.hero = resp;});
   }
 
-  validateHero(): boolean{
-      if(this.hero.superhero.trim().length <= 0){
-        return false;
-      }
+  save() {
+    if (!this.validateHero()) {
+      return;
+    }
 
-      if(this.hero.alter_ego.trim().length <= 0){
-        return false;
-      }
-      if(this.hero.characters.trim().length <= 0){
-        return false;
-      }
-      if(this.hero.first_appearance.trim().length <= 0){
-        return false;
-      }
-      return true;
+    if(!this.hero.id) {
+      this._herosService
+        .addHero(this.hero)
+        .subscribe((hero) => {
+          this.router.navigate(['/heros/edit', hero.id])
+        })
+    } else {
+      this._herosService
+        .updateHero(this.hero)
+        .subscribe((hero) => {
+          console.log('Hero update: ', hero);
+
+          this.router.navigate(['/heros/edit', hero.id])
+        })
+
+
+    }
+
+  }
+
+  validateHero(): boolean {
+    if (this.hero.superhero.trim().length <= 0) {
+      return false;
+    }
+
+    if (this.hero.alter_ego.trim().length <= 0) {
+      return false;
+    }
+    if (this.hero.characters.trim().length <= 0) {
+      return false;
+    }
+    if (this.hero.first_appearance.trim().length <= 0) {
+      return false;
+    }
+    return true;
   }
 }
