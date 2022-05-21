@@ -14,11 +14,7 @@ export class HeroCardComponent implements OnInit {
 
   @Input('heroCard') heroCardC!: Hero;
 
-  constructor() {
-    console.log(this.heroCardC);
-
-
-   }
+  constructor() {}
 
   ngOnInit(): void {
   }
