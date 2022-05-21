@@ -6,7 +6,7 @@ interface Customer {
   favorities?: Favorite[]
 }
 interface Favorite {
-  id: string;
+  id: number | undefined;
   name: string;
 }
 @Component({
@@ -22,10 +22,12 @@ export class DinamicsComponent {
   customer: Customer = {
     name: 'Name1',
     favorities: [
-      { id:"1", name:'fav1'},
-      { id:"2", name:'fav2'}
+      { id:1, name:'fav1'},
+      { id:2, name:'fav2'}
     ]
   }
+
+  newGame: string = '';
 
   save() {
     console.log('Post form');
@@ -33,5 +35,18 @@ export class DinamicsComponent {
 
   delete(index: number) {
     this.customer.favorities?.splice(index,1);
+  }
+
+  addNewGame() {
+    if( this.customer.favorities != undefined){
+      const newFav : Favorite = {
+        id: this.customer.favorities?.length + 1,
+        name: this.newGame
+      };
+      
+      this.customer.favorities?.push({...newFav});
+      this.newGame = '';
+    }
+
   }
 }
