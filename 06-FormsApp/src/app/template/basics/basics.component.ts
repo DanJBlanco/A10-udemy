@@ -11,6 +11,12 @@ export class BasicsComponent implements OnInit {
 
   @ViewChild('myForm') myForm!: NgForm;
 
+  initForm = {
+    product:'--',
+    price: 50,
+    stock: 50
+  }
+
   constructor() { }
 
   ngOnInit(): void {
@@ -27,6 +33,10 @@ export class BasicsComponent implements OnInit {
   }
 
   save() {
+    this.myForm.resetForm({
+      price: 0,
+      stock: 0
+    });
     console.log('myForm: ', this.myForm );
     
   }

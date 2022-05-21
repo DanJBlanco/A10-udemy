@@ -11,7 +11,7 @@
 
                     
                     <input type="text"
-                        ngModel
+                        [ngModel]="initForm.product"
                         name="product"
                         class="form-control"
                         placeholder="Product name"
@@ -34,7 +34,7 @@
                 <label class="col-sm-3 col-form-label">Price</label>
                 <div class="col-sm-9">
                     <input type="number"
-                        ngModel
+                        [ngModel] = "initForm.price"
                         name="price"
                         class="form-control"
                         placeholder="Product price"
@@ -52,7 +52,7 @@
                 <label class="col-sm-3 col-form-label">Stock</label>
                 <div class="col-sm-9">
                     <input type="number"
-                        ngModel
+                        [ngModel]="initForm.stock"
                         name="stock"
                         class="form-control"
                         placeholder="Product stock"
