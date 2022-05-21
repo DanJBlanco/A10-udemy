@@ -1,0 +1,14 @@
+<h1>Heros List!</h1>
+<mat-divider></mat-divider>
+<br>
+<div fxLayout="row wrap"
+      fxLayoutAlign="center"
+      fxLayoutGap="20"
+      fxLayout.xs="column">
+  <div fxFlex="20"
+      fxFlex.lg="15"
+      fxFlex.sm ="30"
+  *ngFor="let item of heros" class="mb-2">
+    <app-hero-card [heroCard]="item"></app-hero-card>
+  </div>
+</div>
