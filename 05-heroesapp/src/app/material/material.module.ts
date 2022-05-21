@@ -12,7 +12,9 @@ import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatAutocompleteModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

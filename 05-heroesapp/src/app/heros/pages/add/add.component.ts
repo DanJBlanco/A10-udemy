@@ -3,17 +3,20 @@ import { Hero, Publisher } from '../../interfaces/heros.interface';
 import { HerosService } from '../../services/heros.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmComponent } from '../../components/confirm/confirm.component';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styles: [
     `
-      img{
+      img {
         width: 100%;
         border-radius: 5px;
       }
-    `
+    `,
   ],
 })
 export class AddComponent implements OnInit {
@@ -37,24 +40,23 @@ export class AddComponent implements OnInit {
     alt_img: '',
   };
 
-
   constructor(
     private _herosService: HerosService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-
-    if(!this.router.url.includes('edit')){
+    if (!this.router.url.includes('edit')) {
       return;
     }
     this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => this._herosService.getHeroById(id))
-      )
+      .pipe(switchMap(({ id }) => this._herosService.getHeroById(id)))
       .subscribe((resp) => {
-        this.hero = resp;});
+        this.hero = resp;
+      });
   }
 
   save() {
@@ -62,33 +64,37 @@ export class AddComponent implements OnInit {
       return;
     }
 
-    if(!this.hero.id) {
-      this._herosService
-        .addHero(this.hero)
-        .subscribe((hero) => {
-          this.router.navigate(['/heros/edit', hero.id])
-        })
+    if (!this.hero.id) {
+      this._herosService.addHero(this.hero).subscribe((hero) => {
+        this.openSnackBar('Hero Created');
+        this.router.navigate(['/heros/edit', hero.id]);
+      });
     } else {
-      this._herosService
-        .updateHero(this.hero)
-        .subscribe((hero) => {
-          console.log('Hero update: ', hero);
-
-          this.router.navigate(['/heros/edit', hero.id])
-        })
-
-
+      this._herosService.updateHero(this.hero).subscribe((hero) => {
+        this.openSnackBar('Hero Updated');
+      });
     }
-
   }
 
-  delete(){
-    if(confirm('Are you sure to delete this record ?')){
-      this._herosService.deleteHero(this.hero.id!)
-      .subscribe( resp => {
-        this.router.navigate(['/heros']);
-      })
-    }
+  delete() {
+    const dialog = this.dialog.open(ConfirmComponent, {
+      width: '50%',
+      data: { ...this.hero },
+    });
+
+    dialog.afterClosed().subscribe((result) => {
+      if (result) {
+        this._herosService.deleteHero(this.hero.id!).subscribe((resp) => {
+          this.router.navigate(['/heros']);
+        });
+      }
+    });
+  }
+
+  openSnackBar(msg: string) {
+    this._snackBar.open(msg, 'ok!', {
+      duration: 3000,
+    });
   }
 
   validateHero(): boolean {

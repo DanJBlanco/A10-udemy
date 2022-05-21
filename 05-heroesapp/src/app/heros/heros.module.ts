@@ -14,6 +14,7 @@ import { ListComponent } from './pages/list/list.component';
 import { HerosRoutingModule } from './heros-routing.module';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { ImagenUrlPipe } from './pipes/imagen-url.pipe';
+import { ConfirmComponent } from './components/confirm/confirm.component';
 
 
 
@@ -25,7 +26,8 @@ import { ImagenUrlPipe } from './pipes/imagen-url.pipe';
     HomeComponent,
     ListComponent,
     HeroCardComponent,
-    ImagenUrlPipe
+    ImagenUrlPipe,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,
