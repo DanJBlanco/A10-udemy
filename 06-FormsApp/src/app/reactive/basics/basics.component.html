@@ -1,1 +1,90 @@
-<p>basics works!</p>
+<h2>Template: Basics</h2>
+
+<div class="row">
+    <div class="col">
+        <form >
+
+            <!-- Product Field -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Product</label>
+                <div class="col-sm-9">
+
+                    
+                    <input type="text"
+                        name="product"
+                        class="form-control"
+                        placeholder="Product name"
+                        autocomplete="off"
+                        required
+                        minlength="3">
+
+
+                    <span class="form-text text-danger"
+              >
+                        must have 3 letters
+                    </span>
+
+                </div>
+            </div>
+
+
+            <!-- Price Field -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Price</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                        name="price"
+                        class="form-control"
+                        placeholder="Product price"
+                        required>
+                        <span class="form-text text-danger">
+                                price must be greater than zero
+                        </span>
+
+                </div>
+            </div>
+
+            <!-- Stock Field -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                        name="stock"
+                        class="form-control"
+                        placeholder="Product stock"
+                        customMin
+                        [min] = "0"
+                        required
+                        >
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end">Save</button>
+                </div>
+            </div>
+
+            
+        </form>
+    </div>
+</div>
+<!-- 
+
+<div class="row">
+    <div class="col">
+
+        <span>Valid:</span>
+        <pre>{{ myForm.valid}}</pre>
+        <span>Pristine:</span>
+        <pre>{{ myForm.pristine}}</pre>
+        <span>Touched:</span>
+        <pre>{{ myForm.touched}}</pre>
+        <span>value:</span>
+        <pre>{{ myForm.value | json}}</pre>
+        <span>CustomDirective:</span>
+        <pre>{{ myForm.controls?.['stock']?.errors | json}}</pre>
+    </div>
+</div> -->
