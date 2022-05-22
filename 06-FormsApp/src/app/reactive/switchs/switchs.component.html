@@ -1,1 +1,89 @@
-<p>switchs works!</p>
+<h2>Reactive: Swicths</h2>
+<hr>
+
+<form action="" >
+
+    <!-- Radios -->
+    <div class="row mb-3">
+        <label for="" class="col-sm-3 col-form-label">Gender</label>
+        <div class="col-sm-9">
+
+            <div class="form-check">
+                <input class="form-check-input" 
+                        type="radio" 
+                        name="radioGender"
+                        value="M" 
+                        id="radioMale"
+                        >
+                <label class="form-check-label" for="radioMale">Male</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" 
+                        type="radio"
+                        value="F" 
+                        name="radioGender" 
+                        id="radioFemale"
+                        >
+                <label class="form-check-label" for="radioFemale">Female</label>
+            </div>
+              
+        </div>
+
+    </div>
+
+
+    <!-- Switchs -->
+    <div class="row mb-3">
+        <label for="" class="col-sm-3 col-form-label">Notifications</label>
+        <div class="col-sm-9">
+            <div class="form-check form-switch">
+                <input class="form-check-input" 
+                        type="checkbox" 
+                        role="switch" 
+                        id="flexSwitchCheckDefault"
+                        >
+                <label class="form-check-label" for="flexSwitchCheckDefault">do you want recibe notifications?</label>
+              </div>
+        
+        </div>
+    </div>
+    
+
+    <!-- Check -->
+    <div class="row mb-3">
+        <label for="" class="col-sm-3 col-form-label"></label>
+        <div class="col-sm-9">
+
+            <div class="form-check">
+                <input class="form-check-input" 
+                        type="checkbox" 
+                        id="flexCheckDefault"
+                        >
+                <label class="form-check-label" for="flexCheckDefault">
+                    Terms & Conditions
+                </label>
+              </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end" >
+                Save
+            </button>
+        </div>
+    </div>
+
+</form>
+<!-- 
+
+<h5>Form value</h5>
+<hr>
+<pre>{{mySwitchForm.value | json}}</pre>
+<br>
+<h5>Valid</h5>
+<pre>{{mySwitchForm.valid}}</pre>
+<br>
+<pre>Conditions: {{'i'}}</pre> -->
