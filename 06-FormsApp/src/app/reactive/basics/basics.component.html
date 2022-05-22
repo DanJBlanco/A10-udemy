@@ -1,0 +1,88 @@
+<h2>Reactive: Basics</h2>
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="myForm" (submit)="save()">
+
+            <!-- Product Field -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Product</label>
+                <div class="col-sm-9">
+                
+                    <input type="text"
+                        class="form-control"
+                        formControlName="name"
+                        placeholder="Product name"
+                        >
+
+
+                    <span class="form-text text-danger" *ngIf="fieldNotValid('name')">
+                        must have 3 letters
+                    </span>
+
+                </div>
+            </div>
+
+
+            <!-- Price Field -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Price</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                        class="form-control"
+                        placeholder="Product price"
+                        formControlName="price"
+                        >
+                        <span class="form-text text-danger" 
+                        *ngIf="fieldNotValid('price')">
+                                price must be greater than zero
+                        </span>
+                        
+                    </div>
+            </div>
+
+            <!-- Stock Field -->
+            <div class="mb-3 row">
+                <label class="col-sm-3 col-form-label">Stock</label>
+                <div class="col-sm-9">
+                    <input type="number"
+                        class="form-control"
+                        placeholder="Product stock"
+                        formControlName="stock"
+                        >
+                        <span class="form-text text-danger" 
+                        *ngIf="fieldNotValid('stock')">
+                                price must be greater than zero
+                        </span>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="submit"
+                            class="btn btn-primary float-end" >Save</button>
+                </div>
+            </div>
+
+            
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+
+        <span>Valid:</span>
+        <pre>{{ myForm.valid}}</pre>
+        <span>Pristine:</span>
+        <pre>{{ myForm.pristine}}</pre>
+        <span>Touched:</span>
+        <pre>{{ myForm.touched}}</pre>
+        <span>value:</span>
+        <pre>{{ myForm.value | json}}</pre>
+        <span>CustomDirective:</span>
+        <pre>{{ myForm.controls?.['stock']?.errors | json}}</pre>
+    </div>
+</div>
