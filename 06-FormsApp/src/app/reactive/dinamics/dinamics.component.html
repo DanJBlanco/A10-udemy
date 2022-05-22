@@ -28,9 +28,12 @@
                 <input 
                     class="form-control" 
                     placeholder="Add favorite"
+                    [formControl]="newFav"
+                    (keyup.enter)="addGame()"
                     >
                 <button class="btn btn-outline-primary" 
-                        type="button">Add</button>
+                        type="button"
+                        (click)="addGame()">Add</button>
             </div>
 
         </div>
@@ -48,7 +51,7 @@
                 class="form-control" [formControlName]="i">
 
                 <button class="btn btn-outline-danger" 
-                        type="button">delete</button>
+                        type="button" (click)="delGame(i)">delete</button>
             </div>
         </div>
     </div>
