@@ -25,11 +25,11 @@ export class CountriesService {
     const url: string = `${this.urlBase}/region/${region}/${this.fields}`
     return this.http.get<SmallCountry[]>(url);
   }
-  getCountriesByCode( code: string): Observable<FullCountry | null> {
+  getCountriesByCode( code: string): Observable<FullCountry[] | null> {
     if(!code){
       return of(null)
     }
     const url: string = `${this.urlBase}/alpha/${code}`
-    return this.http.get<FullCountry>(url);
+    return this.http.get<FullCountry[]>(url);
   }
 }

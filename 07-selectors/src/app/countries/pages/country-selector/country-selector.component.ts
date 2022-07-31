@@ -54,13 +54,21 @@ export class CountrySelectorComponent implements OnInit {
       this.countries = countries;
     })
 
+
     // When country change
-
-
     this.myForm.get('country')?.valueChanges
-      .subscribe( (code) => {
-        console.log(code)
+    .pipe(
+      tap( ( _ ) => {
+        this.myForm.get('border')?.reset('')
+      }),
+      switchMap( countryCode => this.countriesServices.getCountriesByCode(countryCode))
+    )
+    .subscribe( (countryNew ): void => {
+      countryNew?.forEach(element => {
+        this.borders  =element.borders;
       });
+      
+    });
 
 
   }
