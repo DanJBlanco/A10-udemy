@@ -22,7 +22,12 @@ export class CountrySelectorComponent implements OnInit {
   // Fill selectors
   regions: string[] = [];
   countries: SmallCountry[] = [];
-  borders: string[] = [];
+  borders: SmallCountry[] = [];
+  bordersCode: string[] = [];
+
+  // UI
+  loading: boolean = false;
+
 
   constructor(readonly fb: FormBuilder,
             readonly countriesServices: CountriesService) { }
@@ -30,28 +35,17 @@ export class CountrySelectorComponent implements OnInit {
   ngOnInit(): void {
     this.regions = this.countriesServices.regions;
 
-    // When Regions change
-
-    // this.myForm.get('region')?.valueChanges
-    //   .subscribe( region => {
-        
-    //     this.countriesServices.getCountriesByRegion(region)
-    //     .subscribe( countries => {
-    //       console.log(countries);
-    //       this.countries = countries;
-    //     })
-
-    //   })
-
     this.myForm.get('region')?.valueChanges
     .pipe(
       tap( ( _ ) => {
-        this.myForm.get('country')?.reset('')
+        this.myForm.get('country')?.reset('');
+        this.loading = true;
       }),
       switchMap( region => this.countriesServices.getCountriesByRegion(region))
     )
     .subscribe( countries => {      
       this.countries = countries;
+      this.loading = false;
     })
 
 
@@ -59,16 +53,24 @@ export class CountrySelectorComponent implements OnInit {
     this.myForm.get('country')?.valueChanges
     .pipe(
       tap( ( _ ) => {
-        this.myForm.get('border')?.reset('')
+        this.bordersCode = [];
+        this.myForm.get('border')?.reset('');
+        this.loading = true;
       }),
-      switchMap( countryCode => this.countriesServices.getCountriesByCode(countryCode))
-    )
-    .subscribe( (countryNew ): void => {
-      countryNew?.forEach(element => {
-        this.borders  =element.borders;
-      });
+      switchMap( countryCode => this.countriesServices.getCountriesByCode(countryCode)),
+      switchMap( countryFull =>  this.countriesServices.getCountriesCode(countryFull!))
+      )
+    .subscribe( countriesNames => {
+      
+      console.log(countriesNames);
+      countriesNames.forEach(country =>{
+        this.borders.push(country)
+      })
+      this.loading = false;
       
     });
+
+    
 
 
   }
