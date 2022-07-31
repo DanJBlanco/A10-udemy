@@ -1,0 +1,13 @@
+<h1>
+  Ciclo de vida de Angular
+</h1>
+
+<hr>
+
+<button (click)="hide()">
+  {{ show ? 'Hide' : 'Show' }}
+</button>
+
+<app-page-one *ngIf="show"></app-page-one>
+
+
