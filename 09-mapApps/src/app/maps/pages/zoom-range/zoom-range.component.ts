@@ -19,6 +19,7 @@ import * as mapboxgl from 'mapbox-gl';
       padding: 10px;
       border-radius: 5px;
       z-index: 9999;
+      width: 400px;
     }
   `
   ]
@@ -39,11 +40,11 @@ export class ZoomRangeComponent implements AfterViewInit {
       style: 'mapbox://styles/mapbox/streets-v11', // style URL
       center: [-77.06156508878652, -12.067754869424087], // starting position [lng, lat]
       zoom: this.zoomLevel, // starting zoom
-      });
+    });
 
-      this.map.on('zoom', (ev) => {
-        this.zoomLevel = this.map.getZoom();
-      });
+    this.map.on('zoom', (ev) => {
+      this.zoomLevel = this.map.getZoom();
+    });
   }
 
   zoomOut(){
@@ -53,5 +54,8 @@ export class ZoomRangeComponent implements AfterViewInit {
   zoomIn(){
     this.map.zoomIn();
   } 
+  zoomChange(newZoom: string){
+    this.map.zoomTo(Number(newZoom));
+  }
 
 }
