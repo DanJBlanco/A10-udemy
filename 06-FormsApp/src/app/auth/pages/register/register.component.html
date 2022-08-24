@@ -1,0 +1,105 @@
+<h2>Reactives Validations</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form action="" 
+            autocomplete="off" 
+            [formGroup]="myForm"
+            (submit)="onSubmit()">
+
+            <!-- Name -->
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Real Name</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="First and Last name"
+                            formControlName="name"> 
+                    <span class="form-text text-danger" *ngIf="invalidField('name')">
+                        Must be in First and Last name format
+                    </span>
+                </div>
+            </div>
+            <!-- email -->
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
+                    <input type="email" 
+                            class="form-control" 
+                            placeholder="User email"
+                            formControlName="email"> 
+                        <span class="form-text text-danger" 
+                                *ngIf="invalidField('email') && emailErrorMsg.length > 0">
+                            {{emailErrorMsg}}
+                        </span>
+                </div>
+            </div>
+
+            <!-- username -->
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Username</label>
+                <div class="col-sm-9">
+                    <input type="text" 
+                            class="form-control" 
+                            placeholder="Username"
+                            formControlName="username">
+                    <span class="form-text text-danger" 
+                                *ngIf="invalidField('username')">
+                            Username is mandatory OR Dwhyte is used
+                        </span>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" 
+                            class="form-control" 
+                            placeholder="Password"
+                            formControlName="password"> 
+                    <span class="form-text text-danger" 
+                    *ngIf="invalidField('password')">
+                        must be min 6 length 
+                    </span>
+                </div>
+            </div>
+            <!-- Password -->
+            <div class="row mb-3">
+                <label for="" class="col-sm-3 col-form-label">Confirm</label>
+                <div class="col-sm-9">
+                    <input type="password" 
+                            class="form-control" 
+                            placeholder="Confirm password"
+                            formControlName="password_valid"> 
+                    <span class="form-text text-danger" 
+                            *ngIf="invalidField('password_valid')">
+                        Password have to be equals 
+                    </span>
+                </div>
+
+                
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary float-end" type="submit" [disabled]="myForm.pending">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-6">
+
+        <span>Valid: <pre>{{ myForm.valid}}</pre></span>
+        <span>Status: <pre>{{ myForm.status}}</pre></span>
+        <span>Errors:</span>
+        <pre>{{ myForm.controls['email'].errors| json}}</pre>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.img-thumbnail{
+  background-color: #dddddd;
+}
+
+.testimonial-group > .row {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+pre{
+  min-width: 0;
+}
