@@ -11,6 +11,8 @@ export class BarChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('aaaa');
+    
   }
 
 }

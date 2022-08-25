@@ -5,10 +5,6 @@ const routes: Routes = [
     {
         path:'charts',
         loadChildren: () => import('./charts/charts.module').then( m => m.ChartsModule)
-    },
-    {
-        path: '**',
-        redirectTo: 'charts'
     }
 ];
 

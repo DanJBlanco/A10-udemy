@@ -17,7 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies":["chart.js"],
             "outputPath": "dist/app",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -103,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "app"
+  "cli": {
+    "analytics": "fa98c5b2-0f3e-4077-be10-029e461e3450"
+  }
 }
