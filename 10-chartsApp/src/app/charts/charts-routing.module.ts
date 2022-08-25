@@ -20,6 +20,9 @@ const routes: Routes = [
       },
       {
         path:'http-donut', component:DonutsHttpComponent
+      },
+      {
+        path: '**', redirectTo: 'bars'
       }
     ]
   }
